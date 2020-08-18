@@ -13,6 +13,7 @@ All configuration options are currently defined and documented within ``generate
 
 ``$ python3 generate.py``
 
+There is also a ``Makefile`` with targets ``data`` to run ``generate.py`` as above, and ``clean`` to remove generated data sets from ``output/``. The latter should probably be used with care.
 
 ## Output
 
@@ -32,6 +33,7 @@ Each dataset folder contains:
 - ``data.csv``: the data set itself
 - ``labels.csv``: the class labels of the data points
 
+Contents of ``output/`` are protected by a ``.gitignore`` file as it is not anticipated that users will commit them to this project on purpose.
 
 ## Requirements
 
