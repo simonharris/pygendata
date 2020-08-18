@@ -10,17 +10,6 @@ import numpy as np
 from sklearn.datasets import make_blobs
 
 
-def normalise(matrix):
-    """Normalise data to have mean 0 and range 1"""
-
-    matrix = np.array(matrix)
-
-    treated = (matrix - matrix.mean(axis=0)) \
-        / (matrix.max(axis=0) - matrix.min(axis=0))
-
-    return treated
-
-
 # Main configuration
 OPTS_K = [2, 5, 10, 20]              # Number of clusters
 OPTS_FEATS = [2, 10, 50, 100, 1000]  # Number of features
@@ -40,8 +29,19 @@ WEIGHT_SHIFT = 0.005                 # Increase by until MIN_CL_SIZE is met
 NORMALISE_DATA = True
 
 
+def normalise(matrix):
+    """Normalise data to have mean 0 and range 1"""
+
+    matrix = np.array(matrix)
+
+    treated = (matrix - matrix.mean(axis=0)) \
+        / (matrix.max(axis=0) - matrix.min(axis=0))
+
+    return treated
+
+
 def _gen_dataset(no_clusters, no_feats, no_samps, card, stdev):
-    """Generates individual dataset"""
+    """Generate individual dataset"""
 
     if card == 'r':
         weights = _gen_weights(no_clusters)
@@ -77,7 +77,7 @@ def _gen_weights(num_clusters):
 
 
 def _gen_name(config, index):
-    """Generates unique name for dataset"""
+    """Generate the unique name for a given dataset"""
 
     subdir = config[0]
     subdir = f"{subdir:02d}"
@@ -107,7 +107,7 @@ def _save_to_disk(data, labels, config, index):
 
 
 def _handler(config):
-    """The callback for the executor"""
+    """The callback for the Executor"""
 
     config = list(config)
     index = config.pop()   # counter for which of N_EACH this is
