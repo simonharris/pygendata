@@ -38,7 +38,7 @@ Contents of ``output/`` are protected by a ``.gitignore`` file as it is not anti
 ## Requirements
 
 - Python 3
-- scikit-learn <= 0.20
+- scikit-learn >= 0.20
 
 
 ## Future work
